@@ -24,7 +24,7 @@ async def call_model(state: State, config: RunnableConfig, *, store: BaseStore) 
 
     # Retrieve the most recent memories for context
     memories = await store.asearch(
-        ("memories", config["configurable"]["user_id"]), limit=10
+        ("memories", configurable.user_id), limit=10
     )
 
     # Format memories for inclusion in the prompt
