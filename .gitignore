@@ -5,6 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
+.langgraph_api
 
 # Distribution / packaging
 .Python
