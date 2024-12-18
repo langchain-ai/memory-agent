@@ -11,6 +11,7 @@ from langgraph.store.base import BaseStore
 
 from memory_agent import configuration, tools, utils
 from memory_agent.state import State
+import langsmith as ls
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +31,9 @@ async def call_model(state: State, config: RunnableConfig, *, store: BaseStore) 
     )
 
     # Format memories for inclusion in the prompt
-    formatted = "\n".join(f"[{mem.key}]: {mem.value} (similarity: {mem.score})" for mem in memories)
+    formatted = "\n".join(
+        f"[{mem.key}]: {mem.value} (similarity: {mem.score})" for mem in memories
+    )
     if formatted:
         formatted = f"""
 <memories>
@@ -100,8 +103,11 @@ builder.add_conditional_edges("call_model", route_message, ["store_memory", END]
 # Depending on the model, you may want to route back to the model
 # to let it first store memories, then generate a response
 builder.add_edge("store_memory", "call_model")
-graph = builder.compile()
-graph.name = "MemoryAgent"
+
+
+async def graph(config):
+    with ls.tracing_context(project_name="WOOOO"):
+        yield builder.compile()
 
 
 __all__ = ["graph"]
