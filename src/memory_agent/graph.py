@@ -89,7 +89,7 @@ def route_message(state: State):
 
 
 # Create the graph + all nodes
-builder = StateGraph(State, config_schema=configuration.Configuration)
+builder = StateGraph(State, context_schema=configuration.Configuration)
 
 # Define the flow of the memory extraction process
 builder.add_node(call_model)
