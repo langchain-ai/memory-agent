@@ -9,7 +9,7 @@ readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
 dependencies = [
-    "langgraph>=0.2.34,<0.3.0",
+    "langgraph>=0.6.0,<0.7.0",
     # Optional (for selecting different models)
     "langchain-openai>=0.2.1",
     "langchain-anthropic>=0.2.1",
