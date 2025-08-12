@@ -8,7 +8,7 @@ from typing_extensions import Annotated
 from memory_agent import prompts
 
 
-@dataclass(kw_only=True, init=False)
+@dataclass(kw_only=True)
 class Context:
     """Main context class for the memory graph system."""
 
@@ -25,12 +25,11 @@ class Context:
 
     system_prompt: str = prompts.SYSTEM_PROMPT
 
-    def __init__(self, **kwargs):
-        """Initialize configuration, preferring environment variables over passed values."""
+    def __post_init__(self):
+        """Fetch env vars for attributes that were not passed as args."""
         for f in fields(self):
             if not f.init:
                 continue
 
-            # Check env var first, fall back to passed value, then field default
-            value = os.environ.get(f.name.upper(), kwargs.get(f.name, f.default))
-            setattr(self, f.name, value)
+            if getattr(self, f.name) == f.default:
+                setattr(self, f.name, os.environ.get(f.name.upper(), f.default))

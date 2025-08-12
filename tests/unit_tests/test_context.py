@@ -16,5 +16,5 @@ def test_context_init_with_env_vars() -> None:
 
 def test_context_init_with_env_vars_and_passed_values() -> None:
     os.environ["USER_ID"] = "test-user"
-    context = Context(user_id="shouldn't override")
-    assert context.user_id == "test-user"
+    context = Context(user_id="actual-user")
+    assert context.user_id == "actual-user"
