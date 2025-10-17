@@ -16,7 +16,7 @@ class Context:
     """The ID of the user to remember in the conversation."""
 
     model: Annotated[str, {"__template_metadata__": {"kind": "llm"}}] = field(
-        default="anthropic/claude-3-5-sonnet-20240620",
+        default="anthropic/claude-sonnet-4-5-20250929",
         metadata={
             "description": "The name of the language model to use for the agent. "
             "Should be in the form: provider/model-name."

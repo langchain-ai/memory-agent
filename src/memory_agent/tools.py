@@ -1,7 +1,7 @@
 """Define he agent's tools."""
 
 import uuid
-from typing import Annotated, Optional
+from typing import Annotated
 
 from langchain_core.tools import InjectedToolArg
 from langgraph.store.base import BaseStore
@@ -11,7 +11,7 @@ async def upsert_memory(
     content: str,
     context: str,
     *,
-    memory_id: Optional[uuid.UUID] = None,
+    memory_id: uuid.UUID | None = None,
     # Hide these arguments from the model.
     user_id: Annotated[str, InjectedToolArg],
     store: Annotated[BaseStore, InjectedToolArg],

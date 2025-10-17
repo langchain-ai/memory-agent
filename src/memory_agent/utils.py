@@ -1,11 +1,14 @@
 """Utility functions used in our graph."""
 
+from langchain.chat_models import init_chat_model
+from langchain_core.language_models import BaseChatModel
 
-def split_model_and_provider(fully_specified_name: str) -> dict:
-    """Initialize the configured chat model."""
-    if "/" in fully_specified_name:
-        provider, model = fully_specified_name.split("/", maxsplit=1)
-    else:
-        provider = None
-        model = fully_specified_name
-    return {"model": model, "provider": provider}
+
+def load_chat_model(fully_specified_name: str) -> BaseChatModel:
+    """Load a chat model from a fully specified name.
+
+    Args:
+        fully_specified_name (str): String in the format 'provider/model'.
+    """
+    provider, model = fully_specified_name.split("/", maxsplit=1)
+    return init_chat_model(model, model_provider=provider)

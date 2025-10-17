@@ -2,14 +2,15 @@ from typing import List
 
 import langsmith as ls
 import pytest
-from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.store.memory import InMemoryStore
 
 from memory_agent.context import Context
 from memory_agent.graph import builder
 
+pytestmark = pytest.mark.anyio
 
-@pytest.mark.asyncio
+
 @ls.unit
 @pytest.mark.parametrize(
     "conversation",
@@ -33,7 +34,7 @@ from memory_agent.graph import builder
 async def test_memory_storage(conversation: List[str]):
     mem_store = InMemoryStore()
 
-    graph = builder.compile(store=mem_store, checkpointer=MemorySaver())
+    graph = builder.compile(store=mem_store, checkpointer=InMemorySaver())
     user_id = "test-user"
 
     for content in conversation:

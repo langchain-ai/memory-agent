@@ -5,7 +5,6 @@ import logging
 from datetime import datetime
 from typing import cast
 
-from langchain.chat_models import init_chat_model
 from langgraph.graph import END, StateGraph
 from langgraph.runtime import Runtime
 from langgraph.store.base import BaseStore
@@ -15,9 +14,6 @@ from memory_agent.context import Context
 from memory_agent.state import State
 
 logger = logging.getLogger(__name__)
-
-# Initialize the language model to be used for memory extraction
-llm = init_chat_model()
 
 
 async def call_model(state: State, runtime: Runtime[Context]) -> dict:
@@ -47,12 +43,14 @@ async def call_model(state: State, runtime: Runtime[Context]) -> dict:
     # This helps the model understand the context and temporal relevance
     sys = system_prompt.format(user_info=formatted, time=datetime.now().isoformat())
 
+    # Load the chat model from the runtime context
+    llm = utils.load_chat_model(model)
+
     # Invoke the language model with the prepared prompt and tools
     # "bind_tools" gives the LLM the JSON schema for all tools in the list so it knows how
     # to use them.
     msg = await llm.bind_tools([tools.upsert_memory]).ainvoke(
-        [{"role": "system", "content": sys}, *state.messages],
-        context=utils.split_model_and_provider(model),
+        [{"role": "system", "content": sys}, *state.messages]
     )
     return {"messages": [msg]}
 
