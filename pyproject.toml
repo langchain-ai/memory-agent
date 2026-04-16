@@ -26,7 +26,7 @@ dev = ["mypy>=1.11.1", "ruff>=0.6.1"]
 dev = [
     "anyio>=4.7.0",
     "langgraph-cli[inmem]>=0.1.71",
-    "pytest>=8.3.5",
+    "pytest>=9.0.3",
 ]
 
 [build-system]
