@@ -11,7 +11,7 @@ requires-python = ">=3.10"
 dependencies = [
     "langgraph>=1.0.0,<2.0.0",
     # Optional (for selecting different models)
-    "langchain-openai>=0.2.1",
+    "langchain-openai>=1.1.14",
     "langchain-anthropic>=0.2.1",
     "langchain>=0.3.8",
     "langchain-core>=0.3.8",
