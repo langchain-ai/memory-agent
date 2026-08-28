@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["mypy>=1.11.1,<2.0.0", "ruff>=0.6.1"]
+dev = ["mypy>=1.11.1,<2.0.0", "ruff>=0.16.4"]
 
 [dependency-groups]
 dev = [
@@ -28,7 +28,7 @@ dev = [
     "langgraph-cli[inmem]>=0.1.71",
     "mypy>=1.11.1,<2.0.0",
     "pytest>=9.0.3",
-    "ruff>=0.6.1",
+    "ruff>=0.16.4",
 ]
 
 [build-system]
