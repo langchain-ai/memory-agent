@@ -15,7 +15,7 @@ async def upsert_memory(
     # Hide these arguments from the model.
     user_id: Annotated[str, InjectedToolArg],
     store: Annotated[BaseStore, InjectedToolArg],
-):
+) -> str:
     """Upsert a memory in the database.
 
     If a memory conflicts with an existing one, then just UPDATE the

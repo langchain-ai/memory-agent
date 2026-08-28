@@ -3,7 +3,7 @@
 import asyncio
 import logging
 from datetime import datetime
-from typing import cast
+from typing import Any, cast
 
 from langgraph.graph import END, StateGraph
 from langgraph.runtime import Runtime
@@ -16,7 +16,9 @@ from memory_agent.state import State
 logger = logging.getLogger(__name__)
 
 
-async def call_model(state: State, runtime: Runtime[Context]) -> dict:
+async def call_model(
+    state: State, runtime: Runtime[Context]
+) -> dict[str, list[Any]]:
     """Extract the user's state from the conversation and update the memory."""
     user_id = runtime.context.user_id
     model = runtime.context.model
@@ -55,7 +57,9 @@ async def call_model(state: State, runtime: Runtime[Context]) -> dict:
     return {"messages": [msg]}
 
 
-async def store_memory(state: State, runtime: Runtime[Context]):
+async def store_memory(
+    state: State, runtime: Runtime[Context]
+) -> dict[str, list[dict[str, str]]]:
     # Extract tool calls from the last message
     tool_calls = getattr(state.messages[-1], "tool_calls", [])
 
@@ -84,7 +88,7 @@ async def store_memory(state: State, runtime: Runtime[Context]):
     return {"messages": results}
 
 
-def route_message(state: State):
+def route_message(state: State) -> str:
     """Determine the next step based on the presence of tool calls."""
     msg = state.messages[-1]
     if getattr(msg, "tool_calls", None):
