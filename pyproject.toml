@@ -12,7 +12,7 @@ dependencies = [
     "langgraph>=1.0.0",
     # Optional (for selecting different models)
     "langchain-openai>=1.6.2",
-    "langchain-anthropic>=1.4.6",
+    "langchain-anthropic>=1.7.2",
     "langchain>=1.3.10",
     "langchain-core>=1.3.3",
     "python-dotenv>=1.2.2",
