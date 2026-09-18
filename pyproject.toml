@@ -25,7 +25,7 @@ dev = ["mypy>=2.3.1", "ruff>=0.16.7"]
 [dependency-groups]
 dev = [
     "anyio>=4.15.1",
-    "langgraph-cli[inmem]>=0.1.71",
+    "langgraph-cli[inmem]>=0.4.31",
     "mypy>=2.3.1",
     "pytest>=9.0.3",
     "ruff>=0.16.7",
