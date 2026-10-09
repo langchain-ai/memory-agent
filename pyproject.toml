@@ -20,13 +20,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["mypy>=2.3.1", "ruff>=0.16.10"]
+dev = ["mypy>=2.4.0", "ruff>=0.16.10"]
 
 [dependency-groups]
 dev = [
     "anyio>=4.15.1",
     "langgraph-cli[inmem]>=0.4.32",
-    "mypy>=2.3.1",
+    "mypy>=2.4.0",
     "pytest>=9.0.3",
     "ruff>=0.16.10",
 ]
