@@ -1131,7 +1131,7 @@ wheels = [
 
 [[package]]
 name = "langgraph-cli"
-version = "0.4.36"
+version = "0.4.38"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
@@ -1141,9 +1141,9 @@ dependencies = [
     { name = "python-dotenv" },
     { name = "tomli", marker = "python_full_version < '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/67/fe/6c1ea752c94e04b24f8b1be32ac33330b4e435f292549163f22567b0c054/langgraph_cli-0.4.36.tar.gz", hash = "sha256:5999916a0e34c57cafadf60040e2aa7ca023cf4da14086ce56ab4c8c2d3b76e5", size = 1095393, upload-time = "2026-10-16T16:34:02.124Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/13/9e/af18592c463c331bc455c8df5cd8faf2a89013cb3321df5201fe0b8fe6da/langgraph_cli-0.4.38.tar.gz", hash = "sha256:545211d0641cbbf1a923b47c18d86f76eb815531410c29b45217db348f4f2e90", size = 1098057, upload-time = "2026-10-23T14:22:14.603Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e0/71/c9e6c7985eccb5f68d9640dc285126d13209052f0395116ac2431203e484/langgraph_cli-0.4.36-py3-none-any.whl", hash = "sha256:10b16b643a7bd582df22f2cd4211a262c600d5b3548fdb8282dea469c8c4ee34", size = 93151, upload-time = "2026-10-16T16:34:00.832Z" },
+    { url = "https://files.pythonhosted.org/packages/72/fe/d00750e2b361af648c44402aa65d879f124afd712e92ec9fa29e45f4fe77/langgraph_cli-0.4.38-py3-none-any.whl", hash = "sha256:91f57d489c48afc3a4caa5b94f49d60da86727b18cec65559b84d2d87c2b0f33", size = 93672, upload-time = "2026-10-23T14:22:13.293Z" },
 ]
 
 [package.optional-dependencies]
@@ -1407,7 +1407,7 @@ provides-extras = ["dev"]
 [package.metadata.requires-dev]
 dev = [
     { name = "anyio", specifier = ">=4.15.1" },
-    { name = "langgraph-cli", extras = ["inmem"], specifier = ">=0.4.36" },
+    { name = "langgraph-cli", extras = ["inmem"], specifier = ">=0.4.38" },
     { name = "mypy", specifier = ">=2.4.0" },
     { name = "pytest", specifier = ">=9.0.3" },
     { name = "ruff", specifier = ">=0.17.1" },
